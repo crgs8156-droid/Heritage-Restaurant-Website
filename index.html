@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Heritage Restaurant — Berhampore, Murshidabad</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--crimson:#8B0000;--crimson-light:#a31515;--gold:#C9A84C;--gold-light:#E8C97A;--cream:#FAF3E0;--dark:#1a0a00;--charcoal:#2d1a0e;--text:#3b1f0a;--muted:#7a5c3a}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Raleway',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+    .navbar{background:rgba(26,10,0,.97)!important;border-bottom:1px solid rgba(201,168,76,.2);transition:background .3s}
+    .navbar-brand{font-family:'Playfair Display',serif;color:var(--gold)!important;font-size:1.5rem;letter-spacing:2px}
+    .nav-link{color:rgba(250,243,224,.82)!important;font-size:.76rem;letter-spacing:2px;text-transform:uppercase;font-weight:500;transition:color .3s!important;padding:.5rem .8rem!important}
+    .nav-link:hover{color:var(--gold)!important}
+    .nav-cta{background:var(--gold)!important;color:var(--dark)!important;border-radius:2px;font-weight:700!important;padding:.45rem 1rem!important}
+    .nav-cta:hover{background:var(--gold-light)!important}
+    .navbar-toggler{border-color:rgba(201,168,76,.4)!important}
+    .navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(201,168,76,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")!important}
+    #hero{min-height:100vh;background:radial-gradient(ellipse at 30% 60%,#4a0f00 0%,#1a0a00 55%,#0d0500 100%);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+    .hero-grid{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(201,168,76,.04) 40px,rgba(201,168,76,.04) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(201,168,76,.04) 40px,rgba(201,168,76,.04) 41px)}
+    .hero-glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(139,0,0,.22) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%)}
+    .hero-content{position:relative;z-index:2;padding:2rem}
+    .hero-eyebrow{font-family:'Cormorant Garamond',serif;color:var(--gold);letter-spacing:6px;text-transform:uppercase;font-size:.82rem;font-weight:300;opacity:0;animation:riseIn 1s .3s forwards}
+    .hero-title{font-family:'Playfair Display',serif;color:var(--cream);font-size:clamp(3.5rem,9vw,7rem);line-height:1;font-weight:900;opacity:0;animation:riseIn 1s .5s forwards}
+    .hero-title em{color:var(--gold);font-style:italic;display:block}
+    .hero-sub{font-family:'Cormorant Garamond',serif;color:rgba(250,243,224,.6);font-size:1.05rem;letter-spacing:4px;text-transform:uppercase;margin:1rem 0 2rem;opacity:0;animation:riseIn 1s .7s forwards}
+    .hero-line{width:80px;height:1.5px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 2.5rem;opacity:0;animation:riseIn 1s .9s forwards}
+    .hero-badges{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;margin-bottom:2.5rem;opacity:0;animation:riseIn 1s 1.1s forwards}
+    .hero-badge{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);color:var(--gold-light);padding:.4rem 1rem;border-radius:20px;font-size:.73rem;letter-spacing:1.5px}
+    .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:riseIn 1s 1.3s forwards}
+    .btn-gold{background:var(--gold);color:var(--dark);padding:.9rem 2.3rem;font-weight:700;font-size:.78rem;letter-spacing:3px;text-transform:uppercase;border:2px solid var(--gold);border-radius:2px;text-decoration:none;transition:all .3s;display:inline-block}
+    .btn-gold:hover{background:transparent;color:var(--gold)}
+    .btn-ghost{background:transparent;color:var(--cream);padding:.9rem 2.3rem;font-weight:500;font-size:.78rem;letter-spacing:3px;text-transform:uppercase;border:2px solid rgba(250,243,224,.35);border-radius:2px;text-decoration:none;transition:all .3s;display:inline-block}
+    .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+    @keyframes riseIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes panelIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    .sec{padding:5.5rem 0}
+    .sec-dark{background:var(--dark)}
+    .sec-white{background:#fff}
+    .sec-cream{background:var(--cream)}
+    .sec-label{font-family:'Cormorant Garamond',serif;color:var(--gold);letter-spacing:5px;text-transform:uppercase;font-size:.8rem;display:block;text-align:center;margin-bottom:.5rem}
+    .sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,3rem);text-align:center;color:var(--dark);line-height:1.15}
+    .sec-title em{color:var(--crimson);font-style:italic}
+    .sec-title-lt{color:var(--cream)}
+    .sec-title-lt em{color:var(--gold-light)}
+    .sec-rule{width:55px;height:2px;background:var(--gold);margin:1rem auto 3.5rem}
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-d1{transition-delay:.1s}
+    .reveal-d2{transition-delay:.2s}
+    .reveal-d3{transition-delay:.3s}
+    .about-text p{font-family:'Cormorant Garamond',serif;color:rgba(250,243,224,.88);font-size:1.1rem;line-height:1.9;margin-bottom:1rem}
+    .stat-box{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);padding:1.3rem 1rem;text-align:center;border-radius:3px}
+    .stat-num{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.9rem;font-weight:700;display:block}
+    .stat-lbl{color:rgba(250,243,224,.5);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;margin-top:.2rem}
+    .menu-tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+    .menu-tab{background:transparent;border:1.5px solid rgba(139,0,0,.22);color:var(--muted);padding:.5rem 1.2rem;font-family:'Raleway',sans-serif;font-size:.76rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;cursor:pointer;border-radius:2px;transition:all .3s}
+    .menu-tab:hover{border-color:var(--crimson);color:var(--crimson)}
+    .menu-tab.active{background:var(--crimson);border-color:var(--crimson);color:#fff}
+    .menu-panel{display:none}
+    .menu-panel.active{display:block;animation:panelIn .4s ease}
+    .menu-card{background:#fff;border-radius:4px;overflow:hidden;border:1px solid rgba(201,168,76,.16);box-shadow:0 3px 18px rgba(139,0,0,.06);transition:transform .3s,box-shadow .3s;height:100%}
+    .menu-card:hover{transform:translateY(-6px);box-shadow:0 14px 38px rgba(139,0,0,.13)}
+    .menu-card-img{height:165px;display:flex;align-items:center;justify-content:center;font-size:4rem;background:linear-gradient(135deg,#f5e8c8,#ede0c4);position:relative}
+    .mbadge{position:absolute;top:.7rem;right:.7rem;background:var(--crimson);color:#fff;font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;padding:.22rem .55rem;border-radius:2px;font-weight:700}
+    .mbadge-veg{background:#2d7a2d}
+    .menu-card-body{padding:1.2rem}
+    .menu-card-body h4{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--dark);margin-bottom:.35rem}
+    .menu-card-body p{color:var(--muted);font-size:.86rem;line-height:1.6;margin-bottom:.9rem}
+    .menu-cf{display:flex;align-items:center;justify-content:space-between}
+    .mprice{font-family:'Playfair Display',serif;color:var(--crimson);font-size:1.15rem;font-weight:700}
+    .mprice small{font-family:'Raleway';font-size:.72rem;color:var(--muted);font-weight:400}
+    .btn-order{background:var(--crimson);color:#fff;border:none;padding:.38rem .9rem;font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;border-radius:2px;cursor:pointer;transition:background .3s;text-decoration:none;display:inline-block}
+    .btn-order:hover{background:var(--crimson-light);color:#fff}
+    #order{background:linear-gradient(135deg,#1a0a00 0%,#3d1505 55%,#1a0a00 100%);position:relative;overflow:hidden}
+    #order::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,transparent,transparent 25px,rgba(201,168,76,.025) 25px,rgba(201,168,76,.025) 26px)}
+    .order-tabs{display:flex;border:1.5px solid rgba(201,168,76,.28);border-radius:3px;overflow:hidden;margin-bottom:2rem}
+    .order-tab{flex:1;background:transparent;border:none;border-right:1px solid rgba(201,168,76,.28);color:rgba(250,243,224,.5);padding:.85rem .5rem;font-family:'Raleway';font-size:.73rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all .3s}
+    .order-tab:last-child{border-right:none}
+    .order-tab.active{background:var(--gold);color:var(--dark)}
+    .order-tab:hover:not(.active){color:var(--gold)}
+    .order-panel{display:none}
+    .order-panel.active{display:block;animation:panelIn .4s ease}
+    .steps-bar{display:flex;align-items:center}
+    .sdot{width:32px;height:32px;border-radius:50%;background:rgba(201,168,76,.1);border:2px solid rgba(201,168,76,.28);color:rgba(250,243,224,.45);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;transition:all .3s}
+    .sdot.active{background:var(--gold);border-color:var(--gold);color:var(--dark)}
+    .sdot.done{background:var(--crimson);border-color:var(--crimson);color:#fff}
+    .sline{flex:1;height:2px;background:rgba(201,168,76,.18);margin:0 .4rem}
+    .sline.done{background:var(--crimson)}
+    .steps-lbl{display:flex;justify-content:space-between;margin-top:.35rem;margin-bottom:1.5rem}
+    .slbl{font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(250,243,224,.38)}
+    .step-step{display:none;animation:panelIn .4s ease}
+    .step-step.active{display:block}
+    .flabel{color:var(--gold);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:.35rem;display:block}
+    .dinput{background:rgba(250,243,224,.07)!important;border:1.5px solid rgba(201,168,76,.22)!important;color:var(--cream)!important;font-family:'Raleway',sans-serif!important;border-radius:2px!important;transition:border-color .3s!important}
+    .dinput:focus{border-color:var(--gold)!important;box-shadow:none!important;background:rgba(250,243,224,.1)!important}
+    .dinput::placeholder{color:rgba(250,243,224,.28)!important}
+    .dinput option{background:#2d1a0e;color:var(--cream)}
+    .dish-picker{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.7rem;margin-top:.5rem}
+    .dish-pick{background:rgba(250,243,224,.05);border:1.5px solid rgba(201,168,76,.2);border-radius:3px;padding:.8rem .5rem;text-align:center;cursor:pointer;transition:all .3s}
+    .dish-pick:hover{border-color:var(--gold)}
+    .dish-pick.selected{background:rgba(201,168,76,.12);border-color:var(--gold)}
+    .dpi{font-size:1.7rem;display:block;margin-bottom:.25rem}
+    .dpn{color:var(--cream);font-size:.76rem;font-weight:600;display:block}
+    .dpp{color:var(--gold);font-size:.7rem;display:block;margin-top:.15rem}
+    .qty-row{display:flex;align-items:center;gap:.7rem}
+    .qty-btn{width:32px;height:32px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.28);color:var(--gold);border-radius:2px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;font-weight:700;transition:all .3s;user-select:none}
+    .qty-btn:hover{background:var(--gold);color:var(--dark)}
+    .qty-val{color:var(--cream);font-size:1.05rem;font-weight:700;min-width:28px;text-align:center}
+    .sum-box{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:3px;padding:1.4rem}
+    .sum-row{display:flex;justify-content:space-between;align-items:center;padding:.45rem 0;border-bottom:1px solid rgba(201,168,76,.1)}
+    .sum-row:last-child{border-bottom:none}
+    .sum-lbl{color:rgba(250,243,224,.68);font-size:.83rem}
+    .sum-val{color:var(--gold);font-size:.88rem;font-weight:600}
+    .btn-step{background:var(--gold);color:var(--dark);border:none;padding:.82rem 2rem;font-family:'Raleway';font-weight:700;font-size:.78rem;letter-spacing:2.5px;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:background .3s}
+    .btn-step:hover{background:var(--gold-light)}
+    .btn-back{background:transparent;color:rgba(250,243,224,.6);border:1px solid rgba(201,168,76,.25);padding:.82rem 1.4rem;font-family:'Raleway';font-size:.75rem;letter-spacing:2px;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:all .3s}
+    .btn-back:hover{border-color:var(--gold);color:var(--gold)}
+    .dark-card{background:rgba(250,243,224,.04);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:1.8rem}
+    .tbl-picker{display:flex;gap:.8rem;flex-wrap:wrap}
+    .tbl-type{flex:1;min-width:100px;background:rgba(250,243,224,.04);border:1.5px solid rgba(201,168,76,.2);border-radius:3px;padding:.9rem .5rem;text-align:center;cursor:pointer;transition:all .3s}
+    .tbl-type:hover,.tbl-type.selected{background:rgba(201,168,76,.1);border-color:var(--gold)}
+    .tbl-icon{font-size:1.7rem;display:block;margin-bottom:.25rem}
+    .tbl-name{color:var(--cream);font-size:.78rem;font-weight:600;display:block}
+    .tbl-cap{color:var(--gold);font-size:.68rem;display:block;margin-top:.1rem}
+    .success-card{text-align:center;padding:3rem 1rem;display:none}
+    .success-icon{font-size:3.5rem;display:block;margin-bottom:.8rem}
+    .success-title{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.8rem;margin-bottom:.5rem}
+    .success-sub{color:rgba(250,243,224,.7);font-size:.9rem}
+    .testi-card{background:var(--cream);border-left:3px solid var(--gold);padding:1.7rem;border-radius:0 4px 4px 0;position:relative;height:100%}
+    .testi-card::before{content:'"';font-family:'Playfair Display',serif;font-size:5rem;color:var(--gold);opacity:.16;position:absolute;top:0;left:1rem;line-height:1.1}
+    .testi-stars{color:var(--gold);font-size:.82rem;margin-bottom:.5rem}
+    .testi-text{font-family:'Cormorant Garamond',serif;font-size:1.08rem;line-height:1.75;color:var(--text);margin-bottom:.75rem;position:relative;z-index:1}
+    .testi-author{font-weight:700;font-size:.8rem;color:var(--crimson);letter-spacing:1px}
+    .ccard{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.17);border-radius:3px;padding:1.3rem;height:100%}
+    .cicon{width:42px;height:42px;background:rgba(139,0,0,.15);border:1px solid rgba(139,0,0,.22);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0}
+    .clbl{color:var(--gold);font-size:.63rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:.2rem;display:block}
+    .cval{color:rgba(250,243,224,.82);font-size:.9rem;line-height:1.5}
+    footer{background:#0d0500;padding:2.5rem 1.5rem;text-align:center;border-top:1px solid rgba(201,168,76,.1)}
+    .fbrand{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.7rem;display:block;margin-bottom:.3rem}
+    .floc{color:rgba(250,243,224,.42);font-size:.76rem;letter-spacing:2px;display:block;margin-bottom:1.5rem}
+    .flinks a{color:rgba(250,243,224,.42);text-decoration:none;font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;margin:0 .7rem;transition:color .3s}
+    .flinks a:hover{color:var(--gold)}
+    .stack-tag{display:inline-block;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.22);color:var(--gold);font-size:.62rem;letter-spacing:1px;padding:.18rem .55rem;border-radius:10px;margin:.2rem}
+    .fcopy{color:rgba(250,243,224,.22);font-size:.7rem;margin-top:1.2rem}
+    @media(max-width:768px){.sec{padding:3.5rem 0}.order-tab{font-size:.62rem;padding:.72rem .4rem;letter-spacing:1px}.dish-picker{grid-template-columns:repeat(2,1fr)}.tbl-picker{gap:.5rem}.tbl-type{min-width:80px}}
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#hero">Heritage</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="#order">Pre-Book</a></li>
+        <li class="nav-item"><a class="nav-link" href="#order" onclick="switchOrderTab('table')">Book Table</a></li>
+        <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item ms-lg-2"><a class="nav-link nav-cta" href="#order">Order Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow mb-3">Est. in Berhampore &middot; Murshidabad &middot; West Bengal</p>
+    <h1 class="hero-title mb-0">Heritage<em>Restaurant</em></h1>
+    <p class="hero-sub">Authentic Flavours &middot; Royal Tradition</p>
+    <div class="hero-line"></div>
+    <div class="hero-badges mb-4">
+      <span class="hero-badge"><i class="bi bi-truck me-1"></i>Own Delivery Service</span>
+      <span class="hero-badge"><i class="bi bi-calendar-check me-1"></i>Pre-Book Online</span>
+      <span class="hero-badge"><i class="bi bi-people me-1"></i>Table Reservations</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-gold">Explore Menu</a>
+      <a href="#order" class="btn-ghost" onclick="switchOrderTab('table')">Book a Table</a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="sec sec-dark">
+  <div class="container">
+    <span class="sec-label">Our Story</span>
+    <h2 class="sec-title sec-title-lt">A Legacy of <em style="color:var(--gold-light)">Taste</em></h2>
+    <div class="sec-rule"></div>
+    <div class="row align-items-center g-5 reveal">
+      <div class="col-lg-7">
+        <div class="about-text">
+          <p>Nestled in the heart of Gorabazar, Berhampore, Heritage Restaurant has long been a treasured name among food lovers across Murshidabad. Built on authentic Bengali and Mughlai flavours, every dish carries generations of culinary wisdom.</p>
+          <p>From our legendary Special Biryani slow-cooked with saffron and secret spices, to our soul-warming Handi Chicken and buttery Special Kulcha, each plate tells a story of heritage. Now we bring that same legacy straight to your doorstep.</p>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="row g-3">
+          <div class="col-6"><div class="stat-box"><span class="stat-num">100%</span><span class="stat-lbl">Fresh Daily</span></div></div>
+          <div class="col-6"><div class="stat-box"><span class="stat-num">&#127859;</span><span class="stat-lbl">Authentic Recipes</span></div></div>
+          <div class="col-6"><div class="stat-box"><span class="stat-num">Own</span><span class="stat-lbl">Delivery Fleet</span></div></div>
+          <div class="col-6"><div class="stat-box"><span class="stat-num">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stat-lbl">Word of Mouth</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="sec sec-cream">
+  <div class="container">
+    <span class="sec-label">Our Kitchen</span>
+    <h2 class="sec-title">Explore Our <em>Menu</em></h2>
+    <div class="sec-rule"></div>
+    <div class="menu-tabs reveal">
+      <button class="menu-tab active" onclick="switchMenu(this,'signature')">&#11088; Signature</button>
+      <button class="menu-tab" onclick="switchMenu(this,'biryani')">&#127859; Biryani</button>
+      <button class="menu-tab" onclick="switchMenu(this,'chicken')">&#127831; Chicken</button>
+      <button class="menu-tab" onclick="switchMenu(this,'breads')">Breads &amp; Kebabs</button>
+      <button class="menu-tab" onclick="switchMenu(this,'veg')">&#129367; Vegetarian</button>
+      <button class="menu-tab" onclick="switchMenu(this,'desserts')">Desserts</button>
+    </div>
+    <div id="mp-signature" class="menu-panel active">
+      <div class="row g-4">
+        <div class="col-md-4 reveal reveal-d1"><div class="menu-card"><div class="menu-card-img">&#127859;<span class="mbadge">Chef's Special</span></div><div class="menu-card-body"><h4>Special Biryani</h4><p>Slow-cooked, saffron-kissed biryani layered with tender meat and secret heritage spices. Our crown jewel.</p><div class="menu-cf"><span class="mprice">&#8377;180 <small>/ plate</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+        <div class="col-md-4 reveal reveal-d2"><div class="menu-card"><div class="menu-card-img">&#129395;<span class="mbadge">Must Try</span></div><div class="menu-card-body"><h4>Special Kulcha</h4><p>Freshly baked buttery kulcha with rich slow-spiced gravy. A beloved combo that keeps guests returning.</p><div class="menu-cf"><span class="mprice">&#8377;80 <small>/ plate</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+        <div class="col-md-4 reveal reveal-d3"><div class="menu-card"><div class="menu-card-img">&#127831;<span class="mbadge">Fan Fav</span></div><div class="menu-card-body"><h4>Handi Chicken</h4><p>Slow-cooked in a clay handi — rich, smoky and deeply spiced. A dish that warms the soul.</p><div class="menu-cf"><span class="mprice">&#8377;220 <small>/ portion</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+      </div>
+    </div>
+    <div id="mp-biryani" class="menu-panel">
+      <div class="row g-4">
+        <div class="col-md-4"><div class="menu-card"><div class="menu-card-img">&#127859;<span class="mbadge">Best Seller</span></div><div class="menu-card-body"><h4>Special Biryani</h4><p>Heritage's signature saffron biryani with slow-cooked meat and aromatic spices.</p><div class="menu-cf"><span class="mprice">&#8377;180 <small>/ plate</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+        <div class="col-md-4"><div class="menu-card"><div class="menu-card-img">&#127848;<span class="mbadge">Popular</span></div><div class="menu-card-body"><h4>Chicken Dum Biryani</h4><p>Classic dum-cooked biryani with whole spices, caramelised onions and tender chicken.</p><div class="menu-cf"><span class="mprice">&#8377;160 <small>/ plate</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+        <div class="col-md-4"><div class="menu-card"><div class="menu-card-img">&#129385;<span class="mbadge">Rich</span></div><div class="menu-card-body"><h4>Mutton Biryani</h4><p>Bone-in mutton slow-cooked to perfection, layered with basmati and whole spices.</p><div class="menu-cf"><span class="mprice">&#8377;220 <small>/ plate</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+      </div>
+    </div>
+    <div id="mp-chicken" class="menu-panel">
+      <div class="row g-4">
+        <div class="col-md-4"><div class="menu-card"><div class="menu-card-img">&#127831;<span class="mbadge">Heritage Fav</span></div><div class="menu-card-body"><h4>Handi Chicken</h4><p>Slow-cooked in a clay handi — rich, smoky and deeply spiced. A soul-warming specialty.</p><div class="menu-cf"><span class="mprice">&#8377;220 <small>/ portion</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+        <div class="col-md-4"><div class="menu-card"><div class="menu-card-img">&#127858;<span class="mbadge">Classic</span></div><div class="menu-card-body"><h4>Chicken Curry</h4><p>Traditional Bengali-style chicken curry with mustard oil tempering and ground spices.</p><div class="menu-cf"><span class="mprice">&#8377;160 <small>/ portion</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+        <div class="col-md-4"><div class="menu-card"><div class="menu-card-img">&#128293;<span class="mbadge">Spicy</span></div><div class="menu-card-body"><h4>Kosha Mangsho</h4><p>Slow-braised mutton in a thick, intensely spiced dark gravy. A Bengali Sunday staple.</p><div class="menu-cf"><span class="mprice">&#8377;240 <small>/ portion</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+      </div>
+    </div>
+    <div id="mp-breads" class="menu-panel">
+      <div class="row g-4">
+        <div class="col-md-4"><div class="menu-card"><div class="menu-card-img">&#129395;<span class="mbadge">Signature</span></div><div class="menu-card-body"><h4>Special Kulcha</h4><p>Buttery freshly-baked kulcha with rich spiced gravy — the house favourite.</p><div class="menu-cf"><span class="mprice">&#8377;80 <small>/ plate</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+        <div class="col-md-4"><div class="menu-card"><div class="menu-card-img">&#127842;<span class="mbadge">Grilled</span></div><div class="menu-card-body"><h4>Seekh Kebab</h4><p>Minced meat with aromatic herbs, chargrilled to perfection. Served with mint chutney.</p><div class="menu-cf"><span class="mprice">&#8377;140 <small>/ plate</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+        <div class="col-md-4"><div class="menu-card"><div class="menu-card-img">&#129369;<span class="mbadge">Classic</span></div><div class="menu-card-body"><h4>Roomali Roti</h4><p>Thin, tissue-like bread rolled with expert hands — the perfect companion to any curry.</p><div class="menu-cf"><span class="mprice">&#8377;30 <small>/ piece</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+      </div>
+    </div>
+    <div id="mp-veg" class="menu-panel">
+      <div class="row g-4">
+        <div class="col-md-4"><div class="menu-card"><div class="menu-card-img">&#129382;<span class="mbadge mbadge-veg">Veg</span></div><div class="menu-card-body"><h4>Dal Makhani</h4><p>Creamy black lentils slow-cooked overnight with butter and spices. Rich and comforting.</p><div class="menu-cf"><span class="mprice">&#8377;120 <small>/ bowl</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+        <div class="col-md-4"><div class="menu-card"><div class="menu-card-img">&#129472;<span class="mbadge mbadge-veg">Veg</span></div><div class="menu-card-body"><h4>Paneer Butter Masala</h4><p>Soft paneer cubes in a velvety tomato-butter-cream sauce. Mildly spiced, richly satisfying.</p><div class="menu-cf"><span class="mprice">&#8377;150 <small>/ bowl</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+        <div class="col-md-4"><div class="menu-card"><div class="menu-card-img">&#129367;<span class="mbadge mbadge-veg">Veg</span></div><div class="menu-card-body"><h4>Veg Biryani</h4><p>Aromatic basmati rice with seasonal vegetables, whole spices, and saffron water.</p><div class="menu-cf"><span class="mprice">&#8377;120 <small>/ plate</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+      </div>
+    </div>
+    <div id="mp-desserts" class="menu-panel">
+      <div class="row g-4">
+        <div class="col-md-4"><div class="menu-card"><div class="menu-card-img">&#127854;<span class="mbadge">Bengali</span></div><div class="menu-card-body"><h4>Mishti Doi</h4><p>Bengal's iconic sweetened yoghurt set in earthen pots for that distinct earthy, creamy flavour.</p><div class="menu-cf"><span class="mprice">&#8377;50 <small>/ pot</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+        <div class="col-md-4"><div class="menu-card"><div class="menu-card-img">&#127859;<span class="mbadge">Royal</span></div><div class="menu-card-body"><h4>Kheer</h4><p>Slow-simmered rice pudding with cardamom, almonds and rose water — a royal finale.</p><div class="menu-cf"><span class="mprice">&#8377;60 <small>/ bowl</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+        <div class="col-md-4"><div class="menu-card"><div class="menu-card-img">&#129473;<span class="mbadge">Sweet</span></div><div class="menu-card-body"><h4>Rasgulla</h4><p>Soft spongy chenna dumplings in light sugar syrup — Bengal's sweetest tradition.</p><div class="menu-cf"><span class="mprice">&#8377;40 <small>/ 2 pcs</small></span><a href="#order" class="btn-order">Order</a></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="order" class="sec">
+  <div class="container" style="position:relative;z-index:2">
+    <span class="sec-label" style="color:var(--gold)">Reserve &amp; Order</span>
+    <h2 class="sec-title sec-title-lt">Book Online</h2>
+    <div class="sec-rule"></div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="order-tabs reveal">
+          <button class="order-tab active" id="tab-prebook" onclick="switchOrderTab('prebook')"><i class="bi bi-bag-check me-1"></i> Pre-Book Delivery</button>
+          <button class="order-tab" id="tab-table" onclick="switchOrderTab('table')"><i class="bi bi-calendar2-event me-1"></i> Book a Table</button>
+          <button class="order-tab" id="tab-inquiry" onclick="switchOrderTab('inquiry')"><i class="bi bi-chat-dots me-1"></i> Inquiry</button>
+        </div>
+
+        <!-- PRE-BOOK -->
+        <div class="order-panel active" id="op-prebook">
+          <div id="pb-wizard">
+            <div class="steps-bar" id="stepsBar">
+              <div class="sdot active" id="sd1">1</div>
+              <div class="sline" id="sl1"></div>
+              <div class="sdot" id="sd2">2</div>
+              <div class="sline" id="sl2"></div>
+              <div class="sdot" id="sd3">3</div>
+            </div>
+            <div class="steps-lbl">
+              <span class="slbl" style="flex:0 0 32px;text-align:center">Choose</span>
+              <span class="slbl" style="flex:1;text-align:center">Details</span>
+              <span class="slbl" style="flex:0 0 32px;text-align:center">Confirm</span>
+            </div>
+            <div class="step-step active" id="ss1">
+              <label class="flabel mb-2">Select Dishes</label>
+              <div class="dish-picker">
+                <div class="dish-pick" onclick="toggleDish(this,'Special Biryani',180)"><span class="dpi">&#127859;</span><span class="dpn">Special Biryani</span><span class="dpp">&#8377;180</span></div>
+                <div class="dish-pick" onclick="toggleDish(this,'Special Kulcha',80)"><span class="dpi">&#129395;</span><span class="dpn">Special Kulcha</span><span class="dpp">&#8377;80</span></div>
+                <div class="dish-pick" onclick="toggleDish(this,'Handi Chicken',220)"><span class="dpi">&#127831;</span><span class="dpn">Handi Chicken</span><span class="dpp">&#8377;220</span></div>
+                <div class="dish-pick" onclick="toggleDish(this,'Chicken Biryani',160)"><span class="dpi">&#127848;</span><span class="dpn">Chicken Biryani</span><span class="dpp">&#8377;160</span></div>
+                <div class="dish-pick" onclick="toggleDish(this,'Mutton Biryani',220)"><span class="dpi">&#129385;</span><span class="dpn">Mutton Biryani</span><span class="dpp">&#8377;220</span></div>
+                <div class="dish-pick" onclick="toggleDish(this,'Seekh Kebab',140)"><span class="dpi">&#127842;</span><span class="dpn">Seekh Kebab</span><span class="dpp">&#8377;140</span></div>
+                <div class="dish-pick" onclick="toggleDish(this,'Dal Makhani',120)"><span class="dpi">&#129382;</span><span class="dpn">Dal Makhani</span><span class="dpp">&#8377;120</span></div>
+                <div class="dish-pick" onclick="toggleDish(this,'Mishti Doi',50)"><span class="dpi">&#127854;</span><span class="dpn">Mishti Doi</span><span class="dpp">&#8377;50</span></div>
+              </div>
+              <div class="mt-3 mb-1">
+                <label class="flabel">Quantity per item</label>
+                <div class="qty-row">
+                  <div class="qty-btn" onclick="changeQty(-1)">&#8722;</div>
+                  <span class="qty-val" id="qtyVal">1</span>
+                  <div class="qty-btn" onclick="changeQty(1)">+</div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-end mt-4">
+                <button class="btn-step" onclick="goStep(2)">Next: Your Details <i class="bi bi-arrow-right ms-1"></i></button>
+              </div>
+            </div>
+            <div class="step-step" id="ss2">
+              <div class="row g-3">
+                <div class="col-md-6"><label class="flabel">Full Name</label><input type="text" class="form-control dinput" placeholder="Your name" id="pb-name"/></div>
+                <div class="col-md-6"><label class="flabel">Phone Number</label><input type="tel" class="form-control dinput" placeholder="+91 XXXXX XXXXX" id="pb-phone"/></div>
+                <div class="col-12"><label class="flabel">Delivery Address</label><input type="text" class="form-control dinput" placeholder="Full delivery address" id="pb-address"/></div>
+                <div class="col-md-6"><label class="flabel">Preferred Time</label><input type="time" class="form-control dinput" id="pb-time"/></div>
+                <div class="col-md-6"><label class="flabel">Special Instructions</label><input type="text" class="form-control dinput" placeholder="Spice level, allergies..." id="pb-notes"/></div>
+              </div>
+              <div class="d-flex justify-content-between mt-4">
+                <button class="btn-back" onclick="goStep(1)"><i class="bi bi-arrow-left me-1"></i> Back</button>
+                <button class="btn-step" onclick="goStep(3)">Review Order <i class="bi bi-arrow-right ms-1"></i></button>
+              </div>
+            </div>
+            <div class="step-step" id="ss3">
+              <div class="sum-box" id="sumBox"></div>
+              <div class="d-flex justify-content-between mt-4">
+                <button class="btn-back" onclick="goStep(2)"><i class="bi bi-arrow-left me-1"></i> Edit</button>
+                <button class="btn-step" onclick="confirmOrder()">Confirm Order <i class="bi bi-check-circle ms-1"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="success-card" id="pb-success">
+            <span class="success-icon">&#127881;</span>
+            <div class="success-title">Order Pre-Booked!</div>
+            <p class="success-sub">We'll call you shortly to confirm your delivery. Thank you for choosing Heritage Restaurant!</p>
+          </div>
+        </div>
+
+        <!-- BOOK TABLE -->
+        <div class="order-panel" id="op-table">
+          <div class="dark-card reveal" id="tableWrap">
+            <div class="row g-3">
+              <div class="col-12">
+                <label class="flabel">Choose Table Type</label>
+                <div class="tbl-picker">
+                  <div class="tbl-type" onclick="selectTable(this,'Couple Table')"><span class="tbl-icon">&#128145;</span><span class="tbl-name">Couple</span><span class="tbl-cap">2 guests</span></div>
+                  <div class="tbl-type" onclick="selectTable(this,'Family Table')"><span class="tbl-icon">&#128106;</span><span class="tbl-name">Family</span><span class="tbl-cap">4&#8211;6 guests</span></div>
+                  <div class="tbl-type" onclick="selectTable(this,'Group Table')"><span class="tbl-icon">&#127881;</span><span class="tbl-name">Group</span><span class="tbl-cap">7&#8211;12 guests</span></div>
+                  <div class="tbl-type" onclick="selectTable(this,'Private Dining')"><span class="tbl-icon">&#128335;</span><span class="tbl-name">Private</span><span class="tbl-cap">Special occasion</span></div>
+                </div>
+              </div>
+              <div class="col-md-6"><label class="flabel">Guest Name</label><input type="text" class="form-control dinput" placeholder="Your name" id="t-name"/></div>
+              <div class="col-md-6"><label class="flabel">Phone Number</label><input type="tel" class="form-control dinput" placeholder="+91 XXXXX XXXXX" id="t-phone"/></div>
+              <div class="col-md-6"><label class="flabel">Date</label><input type="date" class="form-control dinput" id="t-date"/></div>
+              <div class="col-md-6"><label class="flabel">Time Slot</label>
+                <select class="form-select dinput" id="t-time">
+                  <option value="">Select slot...</option>
+                  <option>12:00 PM &#8211; 1:00 PM</option><option>1:00 PM &#8211; 2:00 PM</option>
+                  <option>2:00 PM &#8211; 3:00 PM</option><option>7:00 PM &#8211; 8:00 PM</option>
+                  <option>8:00 PM &#8211; 9:00 PM</option><option>9:00 PM &#8211; 10:00 PM</option>
+                </select>
+              </div>
+              <div class="col-md-6"><label class="flabel">Number of Guests</label><input type="number" class="form-control dinput" min="1" max="50" placeholder="e.g. 4" id="t-guests"/></div>
+              <div class="col-md-6"><label class="flabel">Occasion (optional)</label>
+                <select class="form-select dinput" id="t-occasion">
+                  <option value="">None</option><option>Birthday</option><option>Anniversary</option>
+                  <option>Business Lunch</option><option>Family Gathering</option><option>Other</option>
+                </select>
+              </div>
+              <div class="col-12"><label class="flabel">Special Requests</label><textarea class="form-control dinput" rows="2" placeholder="Dietary needs, seating preferences..." id="t-notes" style="resize:vertical"></textarea></div>
+              <div class="col-12 mt-2"><button class="btn-step w-100" onclick="confirmTable()">Confirm Reservation <i class="bi bi-check-circle ms-1"></i></button></div>
+            </div>
+          </div>
+          <div class="success-card" id="table-success">
+            <span class="success-icon">&#127874;</span>
+            <div class="success-title">Table Reserved!</div>
+            <p class="success-sub">Your table is booked! We'll call to confirm and look forward to welcoming you.</p>
+          </div>
+        </div>
+
+        <!-- INQUIRY -->
+        <div class="order-panel" id="op-inquiry">
+          <div class="dark-card reveal">
+            <div class="row g-3">
+              <div class="col-md-6"><label class="flabel">Name</label><input type="text" class="form-control dinput" placeholder="Your name" id="i-name"/></div>
+              <div class="col-md-6"><label class="flabel">Phone / Email</label><input type="text" class="form-control dinput" placeholder="Contact details" id="i-contact"/></div>
+              <div class="col-12"><label class="flabel">Message</label><textarea class="form-control dinput" rows="4" placeholder="Your question or message..." id="i-msg" style="resize:vertical"></textarea></div>
+              <div class="col-12"><button class="btn-step w-100" onclick="submitInquiry()">Send Message <i class="bi bi-send ms-1"></i></button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="sec sec-white">
+  <div class="container">
+    <span class="sec-label">What People Say</span>
+    <h2 class="sec-title">Customer <em>Reviews</em></h2>
+    <div class="sec-rule"></div>
+    <div class="row g-4">
+      <div class="col-md-4 reveal reveal-d1"><div class="testi-card"><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">The Special Biryani here is unlike anything else in Berhampore. The aroma alone takes you somewhere royal. Absolutely unforgettable.</p><p class="testi-author">&#8212; Arif H., Berhampore</p></div></div>
+      <div class="col-md-4 reveal reveal-d2"><div class="testi-card"><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">We've been coming for years. The Handi Chicken is slow-cooked to perfection &#8212; rich, smoky, full of heritage flavour. Worth every visit.</p><p class="testi-author">&#8212; Priya M., Murshidabad</p></div></div>
+      <div class="col-md-4 reveal reveal-d3"><div class="testi-card"><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">Finally online! The kulcha combo delivered was still fresh and warm. So happy Heritage now delivers &#8212; will definitely order again!</p><p class="testi-author">&#8212; Suman D., Gorabazar</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="sec sec-dark">
+  <div class="container">
+    <span class="sec-label" style="color:var(--gold)">Find Us</span>
+    <h2 class="sec-title sec-title-lt">Get In <em style="color:var(--gold-light)">Touch</em></h2>
+    <div class="sec-rule"></div>
+    <div class="row g-4 justify-content-center reveal">
+      <div class="col-sm-6 col-lg-3"><div class="ccard"><div class="d-flex align-items-start gap-3"><div class="cicon">&#128205;</div><div><span class="clbl">Address</span><p class="cval">7/B/1, Cantonment Road, Gorabazar, Berhampore, Murshidabad, WB</p></div></div></div></div>
+      <div class="col-sm-6 col-lg-3"><div class="ccard"><div class="d-flex align-items-start gap-3"><div class="cicon">&#128222;</div><div><span class="clbl">Phone</span><p class="cval">+91 98XXX XXXXX<br/><small style="opacity:.6">Mon&#8211;Sun &middot; 10AM&#8211;10PM</small></p></div></div></div></div>
+      <div class="col-sm-6 col-lg-3"><div class="ccard"><div class="d-flex align-items-start gap-3"><div class="cicon">&#128757;</div><div><span class="clbl">Delivery</span><p class="cval">Own fleet within city limits.<br/>Pre-book online anytime.</p></div></div></div></div>
+      <div class="col-sm-6 col-lg-3"><div class="ccard"><div class="d-flex align-items-start gap-3"><div class="cicon">&#128336;</div><div><span class="clbl">Hours</span><p class="cval">Open Daily<br/>10:00 AM &#8211; 10:00 PM</p></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="fbrand">Heritage Restaurant</span>
+  <span class="floc">7/B/1 Cantonment Road, Gorabazar, Berhampore, Murshidabad, West Bengal</span>
+  <div class="flinks mb-3">
+    <a href="#about">About</a><a href="#menu">Menu</a><a href="#order">Pre-Book</a>
+    <a href="#order" onclick="switchOrderTab('table')">Book Table</a><a href="#contact">Contact</a>
+  </div>
+  <div class="mb-2">
+    <span class="stack-tag">HTML5</span>
+    <span class="stack-tag">CSS3</span>
+    <span class="stack-tag">JavaScript</span>
+    <span class="stack-tag">Bootstrap 5</span>
+    <span class="stack-tag">Bootstrap Icons</span>
+  </div>
+  <p class="fcopy">&#169; 2025 Heritage Restaurant &middot; All Rights Reserved &middot; Berhampore, Murshidabad</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainNav').style.background=window.scrollY>60?'rgba(8,2,0,.99)':'rgba(26,10,0,.97)';
+});
+document.querySelectorAll('.reveal').forEach(el=>{
+  new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.08}).observe(el);
+});
+function switchMenu(btn,cat){
+  document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('mp-'+cat).classList.add('active');
+}
+function switchOrderTab(panel){
+  ['prebook','table','inquiry'].forEach(p=>{
+    document.getElementById('tab-'+p)?.classList.toggle('active',p===panel);
+    document.getElementById('op-'+p)?.classList.toggle('active',p===panel);
+  });
+}
+let currentStep=1,selectedDishes={},qty=1;
+function changeQty(d){qty=Math.max(1,Math.min(20,qty+d));document.getElementById('qtyVal').textContent=qty;}
+function toggleDish(el,name,price){
+  el.classList.toggle('selected');
+  if(el.classList.contains('selected'))selectedDishes[name]=price;
+  else delete selectedDishes[name];
+}
+function goStep(n){
+  if(n===2&&!Object.keys(selectedDishes).length){alert('Please select at least one dish.');return;}
+  if(n===3){
+    const nm=document.getElementById('pb-name').value;
+    const ph=document.getElementById('pb-phone').value;
+    const ad=document.getElementById('pb-address').value;
+    if(!nm||!ph||!ad){alert('Please fill in Name, Phone and Address.');return;}
+    buildSummary(nm,ph,ad);
+  }
+  document.querySelectorAll('.step-step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('ss'+n).classList.add('active');
+  currentStep=n;updateSteps();
+}
+function updateSteps(){
+  for(let i=1;i<=3;i++){
+    const d=document.getElementById('sd'+i);
+    d.classList.remove('active','done');
+    if(i<currentStep)d.classList.add('done');
+    else if(i===currentStep)d.classList.add('active');
+  }
+  for(let i=1;i<=2;i++)document.getElementById('sl'+i)?.classList.toggle('done',i<currentStep);
+}
+function buildSummary(nm,ph,ad){
+  const time=document.getElementById('pb-time').value||'ASAP';
+  const notes=document.getElementById('pb-notes').value;
+  let total=0,rows='';
+  for(const[dish,price]of Object.entries(selectedDishes)){
+    const sub=price*qty;total+=sub;
+    rows+=`<div class="sum-row"><span class="sum-lbl">${dish} x${qty}</span><span class="sum-val">&#8377;${sub}</span></div>`;
+  }
+  rows+=`<div class="sum-row"><span class="sum-lbl" style="font-weight:700;color:var(--cream)">Total</span><span class="sum-val" style="font-size:1.1rem;color:var(--gold-light)">&#8377;${total}</span></div>`;
+  document.getElementById('sumBox').innerHTML=
+    `<div class="sum-row"><span class="sum-lbl">Name</span><span class="sum-val">${nm}</span></div>
+     <div class="sum-row"><span class="sum-lbl">Phone</span><span class="sum-val">${ph}</span></div>
+     <div class="sum-row"><span class="sum-lbl">Address</span><span class="sum-val">${ad}</span></div>
+     <div class="sum-row"><span class="sum-lbl">Time</span><span class="sum-val">${time}</span></div>
+     ${notes?`<div class="sum-row"><span class="sum-lbl">Notes</span><span class="sum-val">${notes}</span></div>`:''}
+     ${rows}`;
+}
+function confirmOrder(){
+  document.getElementById('pb-wizard').style.display='none';
+  document.getElementById('pb-success').style.display='block';
+}
+let selectedTableType='';
+function selectTable(el,type){
+  document.querySelectorAll('.tbl-type').forEach(t=>t.classList.remove('selected'));
+  el.classList.add('selected');selectedTableType=type;
+}
+function confirmTable(){
+  const nm=document.getElementById('t-name').value;
+  const ph=document.getElementById('t-phone').value;
+  const dt=document.getElementById('t-date').value;
+  const tm=document.getElementById('t-time').value;
+  const gs=document.getElementById('t-guests').value;
+  if(!nm||!ph||!dt||!tm||!gs||!selectedTableType){alert('Please fill in all required fields and select a table type.');return;}
+  document.getElementById('tableWrap').style.display='none';
+  document.getElementById('table-success').style.display='block';
+}
+function submitInquiry(){
+  const nm=document.getElementById('i-name').value;
+  const ct=document.getElementById('i-contact').value;
+  const mg=document.getElementById('i-msg').value;
+  if(!nm||!ct||!mg){alert('Please fill in all fields.');return;}
+  alert('Thank you, '+nm+'! We\'ll get back to you soon.');
+  document.getElementById('i-name').value='';
+  document.getElementById('i-contact').value='';
+  document.getElementById('i-msg').value='';
+}
+document.getElementById('t-date').min=new Date().toISOString().split('T')[0];
+</script>
+</body>
+</html>
